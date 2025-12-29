@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { MapPin, Phone, Mail, Clock, Building, FileText, DollarSign, CheckCircle, AlertCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Building, DollarSign, CheckCircle, AlertCircle } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { Alert, AlertDescription } from "./ui/alert";
 
@@ -43,7 +43,7 @@ export function Contact() {
     terms: false,
   });
 
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
@@ -51,7 +51,7 @@ export function Contact() {
   }>({ type: null, message: "" });
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<FormData> = {};
+    const newErrors: Partial<Record<keyof FormData, string>> = {};
 
     if (!formData.title) newErrors.title = "Title is required";
     if (!formData.firstName.trim()) newErrors.firstName = "First name is required";

@@ -55,8 +55,14 @@ async function sendEmailNotification(formData: ContactFormData) {
         <p><strong>Name:</strong> ${formData.title} ${formData.firstName} ${formData.lastName}</p>
         <p><strong>Email:</strong> <a href="mailto:${formData.email}">${formData.email}</a></p>
         <p><strong>Phone:</strong> ${formData.phone}</p>
-      });
-    }
+  `; // emailHtml
+  // TODO: implement nodemailer send here
+}
+
+// Route to handle contact form submissions
+app.post('/api/contact', async (req: Request, res: Response) => {
+  try {
+    const formData: ContactFormData = req.body;
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

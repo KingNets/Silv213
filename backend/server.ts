@@ -167,6 +167,10 @@ app.get('/api/submissions', (req: Request, res: Response) => {
 });
 
 // Health check route
+app.get('/', (req: Request, res: Response) => {
+  res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
+
 app.get('/api/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'OK', message: 'Server is running' });
 });

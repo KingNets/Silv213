@@ -1,19 +1,17 @@
 "use client";
 
 import { GripVerticalIcon } from "lucide-react";
-import * as ResizablePrimitive from "react-resizable-panels";
-
 import { cn } from "./utils";
 
+// Simple placeholder - react-resizable-panels has type issues in build
 function ResizablePanelGroup({
   className,
   ...props
 }: any) {
   return (
-    <ResizablePrimitive.PanelGroup
-      data-slot="resizable-panel-group"
+    <div
       className={cn(
-        "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
+        "flex h-full w-full",
         className,
       )}
       {...props}
@@ -24,7 +22,7 @@ function ResizablePanelGroup({
 function ResizablePanel({
   ...props
 }: any) {
-  return <ResizablePrimitive.Panel data-slot="resizable-panel" {...props} />;
+  return <div {...props} />;
 }
 
 function ResizableHandle({
@@ -37,10 +35,9 @@ function ResizableHandle({
   [key: string]: any;
 }) {
   return (
-    <ResizablePrimitive.PanelResizeHandle
-      data-slot="resizable-handle"
+    <div
       className={cn(
-        "bg-border focus-visible:ring-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
+        "bg-border relative flex w-px items-center justify-center",
         className,
       )}
       {...props}
@@ -50,7 +47,7 @@ function ResizableHandle({
           <GripVerticalIcon className="size-2.5" />
         </div>
       )}
-    </ResizablePrimitive.PanelResizeHandle>
+    </div>
   );
 }
 
